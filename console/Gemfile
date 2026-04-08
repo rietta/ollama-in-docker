@@ -10,4 +10,3 @@ end
 gem 'pry'
 gem 'openai'
 gem 'json'
-gem 'dotenv-ruby'
