@@ -1,0 +1,39 @@
+# Requires https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html
+services:
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - 11434:11434
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=1
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+    command: serve 
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: "nvidia"
+              device_ids: ["0"]
+              capabilities: [gpu]
+    restart: always
+    volumes:
+      - ollama:/root/.ollama
+  
+  webui:
+    image: ghcr.io/open-webui/open-webui:latest
+    expose:
+      - 8080/tcp
+    ports:
+      - 8080:8080/tcp
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+      # uncomment the following if you are running ollama on the docker host and remove the ollama service below
+      #- OLLAMA_BASE_URL=http://host.docker.internal:11434
+    volumes:
+      - open-webui:/app/backend/data
+    depends_on:
+      - ollama
+
+volumes:
+  ollama:
+  open-webui:
