@@ -34,6 +34,22 @@ services:
     depends_on:
       - ollama
 
+
+  console:
+    tty: true
+    stdin_open: true
+    restart: on-failure
+    build:
+      context: ./console
+    command: bash
+    working_dir: /app/
+    environment:
+      - OLLAMA_BASE_URL=http://ollama:11434
+    volumes:
+      - ./console:/app
+    depends_on:
+      - ollama
+
 volumes:
   ollama:
   open-webui:
