@@ -37,7 +37,11 @@ Wed Apr  8 17:39:22 2026
 |    0   N/A  N/A          249301      C   /usr/bin/ollama                        1656MiB |
 +-----------------------------------------------------------------------------------------+
 ```
+## The Interactive Ruby Console
 
+```bash
+docker compose run console
+```
 
 ## Bring up Server
 

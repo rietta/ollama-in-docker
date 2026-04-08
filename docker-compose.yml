@@ -35,6 +35,7 @@ services:
       - ollama
 
 
+  # A simple interactive ruby console with pry
   console:
     tty: true
     stdin_open: true
