@@ -2,6 +2,8 @@
 
 This is Frank's personal local Ollama set up in Docker. This runs on a Ubuntu Linux LTS 24.04.
 
+Wrote about the big picture at https://rietta.com/blog/ollama-with-nvidia-gpu-in-docker-compose/.
+
 ## GPU Information
 
 Frank's system is running a NVIDIA GeForce RTX 4070 GPU. Running the nvidia-smi command gives details:
