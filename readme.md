@@ -45,8 +45,30 @@ docker compose up
 
 It will automatically download and start the OpenWeb UI.
 
-You can access the web interface at http://localhost:8080/
+You can access the web interface at http://localhost:8080/.
 
+Read more about Open WebUI at https://github.com/open-webui/open-webui
+
+## Stop Server
+
+```bash
+docker compose down --remove-orphans
+```
+
+## Running Services
+
+This docker-compose.yml brings up two servers. One is the OpenWeb UI and the other is the Ollama server itself. You can see this by running:
+
+```bash
+$ docker ps
+CONTAINER ID   IMAGE                                  COMMAND               CREATED         STATUS                   PORTS                                             NAMES
+ca1c3602ba25   ghcr.io/open-webui/open-webui:latest   "bash start.sh"       5 minutes ago   Up 5 minutes (healthy)   0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp       ollama-webui-1
+cf364379003c   ollama/ollama:latest                   "/bin/ollama serve"   5 minutes ago   Up 5 minutes             0.0.0.0:11434->11434/tcp, [::]:11434->11434/tcp   ollama-ollama-1
+```
+This shows that the following ports are being listened to on your system:
+
+- 8080 -> Web UI for managing and "chatting" with models.
+- 11434 -> OLLAMA server for inference and direct connections.
 
 ## List Volumes
 
