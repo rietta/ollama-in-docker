@@ -41,7 +41,7 @@ services:
     restart: on-failure
     build:
       context: ./console
-    command: bash
+    command: bundle exec pry /app/play.rb
     working_dir: /app/
     environment:
       - OLLAMA_BASE_URL=http://ollama:11434
