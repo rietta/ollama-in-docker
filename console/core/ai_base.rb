@@ -2,11 +2,11 @@ require 'openai'
 require 'json'
 
 class AiBase
-  attr_accessor :source_text, :response_text
+  attr_accessor :source_text, :response_text, 
   def initialize(ai_model: nil, source_text: nil)
-      @client = OpenAI::Client.new(
-          uri_base: "http://localhost:11434"
-          )
+      ai_server = ENV.fetch('OLLAMA_BASE_URL', "http://localhost:11434")
+
+      @client = OpenAI::Client.new(uri_base: ai_server)
 
       # Use the preferred AI model, or default to llama3.1 if none specified
       @ai_model = ai_model || "llama3.1:8b"
@@ -15,12 +15,12 @@ class AiBase
       @source_text = source_text || ""
   end
 
-  def chat(message_text)
+  def chat(message_text, temperature = 0.7)
       @response = @client.chat(
           parameters: {
               model: @ai_model, # Required.
               messages: [{ role: "user", content: message_text}], # Required.
-              temperature: 0.7,
+              temperature: temperature,
           }
       )
       if !@response.nil?
