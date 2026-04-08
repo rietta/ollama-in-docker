@@ -6,6 +6,6 @@ FROM ruby:3.4.8-trixie
 RUN apt-get update && apt-get install -y build-essential git libyaml-dev libpq-dev curl wget vim nano
 
 # Set up gems
-# COPY Gemfile Gemfile.lock ./
+COPY Gemfile Gemfile.lock ./
 
-# RUN gem install bundler && bundle install --jobs 20 --retry 5
+RUN gem install bundler && bundle install --jobs 20 --retry 5
