@@ -1,5 +1,61 @@
-Local Ollama in Docker
+# Local Ollama in Docker
 
-To run this O
+This is Frank's personal local Ollama set up in Docker. This runs on a Ubuntu Linux LTS 24.04.
 
-Continue.dev
+## GPU Information
+
+Frank's system is running a NVIDIA GeForce RTX 4070 GPU. Running the nvidia-smi command gives details:
+
+```
+$ nvidia-smi 
+Wed Apr  8 17:39:22 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 580.126.09             Driver Version: 580.126.09     CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 4070 ...    Off |   00000000:01:00.0  On |                  N/A |
+|  0%   42C    P2             34W /  220W |    2310MiB /  12282MiB |      1%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A            5241      G   /usr/lib/xorg/Xorg                      242MiB |
+|    0   N/A  N/A            5573      G   /usr/bin/gnome-shell                     64MiB |
+|    0   N/A  N/A            6057      G   ...exec/xdg-desktop-portal-gnome          3MiB |
+|    0   N/A  N/A          214413      G   ...slack/216/usr/lib/slack/slack         50MiB |
+|    0   N/A  N/A          220068    C+G   ...rack-uuid=3190709233690919630         71MiB |
+|    0   N/A  N/A          245265      G   /usr/share/code/code                     60MiB |
+|    0   N/A  N/A          249301      C   /usr/bin/ollama                        1656MiB |
++-----------------------------------------------------------------------------------------+
+```
+
+
+## Bring up Server
+
+```bash
+docker compose up
+```
+
+It will automatically download and start the OpenWeb UI.
+
+You can access the web interface at http://localhost:8080/
+
+
+## List Volumes
+
+```bash
+$ docker volume ls | grep 'ollama'
+```
+
+Results like:
+```
+local     ollama_ollama
+local     ollama_open-webui
+```
