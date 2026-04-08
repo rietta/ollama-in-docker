@@ -8,5 +8,5 @@ git_source(:github) do |repo_name|
 end
 
 gem 'pry'
-gem 'openai'
+gem 'ruby-openai'
 gem 'json'

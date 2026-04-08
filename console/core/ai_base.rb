@@ -2,7 +2,8 @@ require 'openai'
 require 'json'
 
 class AiBase
-  attr_accessor :source_text, :response_text, 
+  attr_accessor :source_text, :response_text
+
   def initialize(ai_model: nil, source_text: nil)
       ai_server = ENV.fetch('OLLAMA_BASE_URL', "http://localhost:11434")
 
