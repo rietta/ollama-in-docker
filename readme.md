@@ -38,12 +38,13 @@ Wed Apr  8 17:39:22 2026
 +-----------------------------------------------------------------------------------------+
 
 **Pro-tip**: If you want to monitor continuously, you can run:
+
 ```bash
 watch -n 1 nvidia-smi 
 ```
+
 Ctrl+C to exit when you are done.
 
-```
 ## The Interactive Ruby Console
 
 ```bash
