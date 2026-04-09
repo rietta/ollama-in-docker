@@ -34,7 +34,6 @@ services:
     depends_on:
       - ollama
 
-
   # A simple interactive ruby console with pry
   console:
     tty: true
